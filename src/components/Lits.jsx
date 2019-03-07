@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import ListItem from "./ListItem";
-
+const closeButtonStyle = {
+  position: "absolute",
+  top: 5,
+  right: 5,
+  fontSize: 10,
+  cursor: "default"
+};
 const ListStyle = {
+  position: "relative",
   border: "1px solid #868585",
   width: "250px",
   padding: "10px 30px",
@@ -9,7 +16,13 @@ const ListStyle = {
   borderRadius: 4,
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-between"
+  justifyContent: "space-between",
+  boxShadow: `
+  0 1px 1px rgba(0,0,0,1),
+  0 10px 0 -5px #5f6063,
+  0 10px 1px -4px rgba(0,0,0,1),
+  0 20px 0 -10px #5f6063,
+  0 20px 1px -9px rgba(0,0,0,1)`
 };
 const inputStyle = {
   background: "none",
@@ -60,6 +73,12 @@ class List extends Component {
     const { props } = this;
     return (
       <div style={ListStyle}>
+        <span
+          style={closeButtonStyle}
+          onClick={() => props.onDeleteList(props.data.id)}
+        >
+          ❌
+        </span>
         <h6>{props.data.listName}</h6>
         <div>
           {props.data.todos.map((listItem) => (

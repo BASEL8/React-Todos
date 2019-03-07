@@ -210,6 +210,12 @@ class App extends Component {
       Lists: [...newLists]
     });
   };
+  onDeleteList = (litsId) => {
+    let newLists = this.state.Lists.slice();
+    this.setState({
+      Lists: [...newLists].filter((list) => list.id !== litsId)
+    });
+  };
   componentDidMount() {
     const newLists = [...this.state.Lists];
     newLists.map(
@@ -245,6 +251,7 @@ class App extends Component {
                 onTodoToDone={this.onTodoToDone}
                 onAddTodo={this.onAddTodo}
                 onDelete={this.onDelete}
+                onDeleteList={this.onDeleteList}
                 ListInputValue={this.state.ListInputValue}
                 onFilterDeleted={this.onFilterDeleted}
                 onFilterCompleted={this.onFilterCompleted}
