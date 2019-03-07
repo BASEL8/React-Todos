@@ -2,13 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import List from "./components/Lits";
 import Hello from "./components/Hello";
-const AddListButtonStyle = {
-  background: "none",
-  border: "1px solid #868585",
-  padding: "5px 10px",
-  borderRadius: 4,
-  color: "white"
-};
+
 const inputStyle = {
   background: "none",
   borderRight: "none",
@@ -35,7 +29,7 @@ class App extends Component {
     this.state = {
       user: "Basel",
       ListInputValue: "",
-      listNameValue: "No Name",
+      listNameValue: "",
       id: 1,
       Lists: [
         {
@@ -202,7 +196,6 @@ class App extends Component {
     });
   };
   addList = () => {
-    console.log(this.state);
     let newId = this.state.id + 1;
     let newLists = this.state.Lists.slice();
     newLists.push({
@@ -236,8 +229,9 @@ class App extends Component {
             <input
               style={inputStyle}
               onChange={(e) => this.setState({ listNameValue: e.target.value })}
-              value={this.state.listNameValue}
               placeholder="Add List"
+              onFocus={(e) => (e.target.value = "")}
+              onBlur={(e) => (e.target.value = "")}
             />
             <button style={ListInputButtonStyle} onClick={this.addList}>
               Add List

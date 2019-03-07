@@ -76,8 +76,9 @@ class List extends Component {
           <input
             style={inputStyle}
             onChange={(e) => this.setState({ inputValue: e.target.value })}
-            value={this.state.inputValue}
             placeholder="add todo"
+            onFocus={(e) => (e.target.value = "")}
+            onBlur={(e) => (e.target.value = "")}
           />
           <button
             style={ListInputButtonStyle}
