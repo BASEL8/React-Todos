@@ -22,6 +22,12 @@
 .App-link {
   color: #61dafb;
 }
+.Lists-holder {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 @keyframes App-logo-spin {
   from {
